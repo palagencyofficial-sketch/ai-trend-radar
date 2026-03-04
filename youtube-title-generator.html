@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI YouTube Title Generator</title>
+
+<meta name="description" content="Free AI YouTube title generator for viral videos">
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:50px;
+}
+
+input{
+padding:10px;
+width:250px;
+}
+
+button{
+padding:10px 20px;
+background:#22c55e;
+border:none;
+color:white;
+cursor:pointer;
+margin-left:10px;
+}
+
+.result{
+margin-top:30px;
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 AI YouTube Title Generator</h1>
+
+<p>Create viral YouTube titles instantly</p>
+
+<input id="topic" placeholder="Enter video topic">
+
+<button onclick="generate()">Generate Titles</button>
+
+<div id="result"></div>
+
+<script>
+
+function generate(){
+
+let topic=document.getElementById("topic").value
+
+let titles=[
+
+`I Tried ${topic} for 7 Days`,
+`${topic} – Nobody Talks About This`,
+`10 Secrets About ${topic}`,
+`${topic} Changed My Life`,
+`The Dark Truth About ${topic}`,
+`${topic} Explained in 5 Minutes`,
+`Why ${topic} is Blowing Up`,
+`${topic} Tutorial for Beginners`,
+`${topic} vs Reality`,
+`How I Made Money with ${topic}`
+
+]
+
+let html=""
+
+titles.forEach(t=>{
+html+=`<p>${t}</p>`
+})
+
+document.getElementById("result").innerHTML=html
+
+}
+
+</script>
+
+</body>
+</html>
