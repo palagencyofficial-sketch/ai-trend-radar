@@ -1,68 +1,291 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="p2bqcY547c5C0jRk1OHr6VxH8CW3-QenVvPtb79iXR8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trend Radar | Ultimate Creator Toolkit</title>
+    <meta name="description" content="The all-in-one AI suite for content creators. Find trends, generate scripts, and grow your channel.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #020617; /* Very dark slate */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
 
-    <!-- Homepage / Main Dashboard (Highest Priority) -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
+        /* Glassmorphism Hub Cards */
+        .tool-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
 
-    <!-- Trending Topics (Updates Frequently) -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/trending.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.9</priority>
-    </url>
+        .tool-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    <!-- Faceless Video Engine (Premium Tool) -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/faceless-video-engine.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+        .tool-card:hover::before {
+            opacity: 1;
+        }
 
-    <!-- Script Generator -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/script-generator.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+        .tool-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--hover-color);
+            box-shadow: 0 20px 40px -15px var(--hover-shadow);
+            background: rgba(15, 23, 42, 0.8);
+        }
 
-    <!-- Video Idea Generator -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/video-idea-generator.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+        .tool-content {
+            position: relative;
+            z-index: 10;
+        }
 
-    <!-- Thumbnail Generator -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/thumbnail-generator.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+        /* Animated Background Gradients */
+        .bg-gradient-blob {
+            position: absolute;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.4;
+        }
 
-    <!-- YouTube Title Generator -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/youtube-title-generator.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative flex flex-col">
 
-    <!-- Viral Score Checker -->
-    <url>
-        <loc>https://ai-trend-radar-eight.vercel.app/viral-score.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    <!-- Ambient Background Blobs -->
+    <div class="bg-gradient-blob bg-emerald-500 w-[500px] h-[500px] rounded-full top-[-100px] left-[-100px] animate-blob"></div>
+    <div class="bg-gradient-blob bg-indigo-500 w-[400px] h-[400px] rounded-full top-[20%] right-[-50px] animate-blob animation-delay-2000"></div>
+    <div class="bg-gradient-blob bg-rose-500 w-[600px] h-[600px] rounded-full bottom-[-200px] left-[20%] animate-blob animation-delay-4000"></div>
 
-</urlset>
+    <!-- Navigation / Logo -->
+    <nav class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-20">
+        <div class="flex items-center gap-3 cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"></path><path d="M4 5.49A10 10 0 0 0 4.93 19.07"></path><path d="M22 12A10 10 0 0 0 19.07 4.93"></path><path d="M22 12a10 10 0 0 1-2.93 7.07"></path><circle cx="12" cy="12" r="2"></circle></svg>
+            </div>
+            <span class="font-heading font-bold text-xl tracking-tight text-white">AI Trend Radar</span>
+        </div>
+        <a href="mailto:Palagencyofficial@gmail.com" class="hidden md:flex text-sm font-medium text-slate-300 hover:text-white transition-colors items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50 hover:bg-slate-700">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Contact Support
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-6 pt-12 pb-24 relative z-10">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 mb-6 backdrop-blur-md">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-300">8 Premium Tools Available</span>
+            </div>
+            <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                The Ultimate Suite For <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400">Content Creators.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+                Generate viral ideas, analyze trends, write faceless scripts, and design high-CTR thumbnails—all powered by advanced AI algorithms.
+            </p>
+        </div>
+
+        <!-- Tools Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="toolsGrid">
+            
+            <!-- Tool 1: AI Trend Radar -->
+            <a href="https://ai-trend-radar-eight.vercel.app/" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.1s; --hover-color: rgba(16, 185, 129, 0.4); --hover-shadow: rgba(16, 185, 129, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 group-hover:bg-emerald-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"></path><path d="M4 5.49A10 10 0 0 0 4.93 19.07"></path><path d="M22 12A10 10 0 0 0 19.07 4.93"></path><path d="M22 12a10 10 0 0 1-2.93 7.07"></path><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Trend Radar Scanner</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Scan any niche to find viral content opportunities and analyze growth velocity.</p>
+                    <div class="text-emerald-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 2: Trending Topics -->
+            <a href="https://ai-trend-radar-eight.vercel.app/trending.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.15s; --hover-color: rgba(239, 68, 68, 0.4); --hover-shadow: rgba(239, 68, 68, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
+                            <svg class="w-6 h-6 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </div>
+                        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold uppercase rounded-md border border-red-500/20 animate-pulse">Live</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Live Trending Topics</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">A real-time dashboard of the hottest, fastest-growing niches on YouTube.</p>
+                    <div class="text-red-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 3: Faceless Engine -->
+            <a href="https://ai-trend-radar-eight.vercel.app/faceless-video-engine.html" class="tool-card rounded-3xl p-6 group block md:col-span-2 animate-fade-in-up" style="animation-delay: 0.2s; --hover-color: rgba(99, 102, 241, 0.4); --hover-shadow: rgba(99, 102, 241, 0.2);">
+                <div class="tool-content flex flex-col h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoOTksIDEwMiwgMjQxLCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjIuMTgiIHJ5PSIyLjE4Ij48L3JlY3Q+PGxpbmUgeDE9IjciIHkxPSIyIiB4Mj0iNyIgeTI9IjIyIj48L2xpbmU+PGxpbmUgeDE9IjE3IiB5MT0iMiIgeDI9IjE3IiB5Mj0iMjIiPjwvbGluZT48bGluZSB4MT0iMiIgeTE9IjEyIiB4Mj0iMjIiIHkyPSIxMiI+PC9saW5lPjxsaW5lIHgxPSIyIiB5MT0iNyIgeDI9IjciIHkyPSI3Ij48L2xpbmU+PGxpbmUgeDE9IjIiIHkxPSIxNyIgeDI9IjciIHkyPSIxNyI+PC9saW5lPjxsaW5lIHgxPSIxNyIgeTE9IjE3IiB4Mj0iMjIiIHkyPSIxNyI+PC9saW5lPjxsaW5lIHgxPSIxNyIgeTE9IjciIHkyPSIyMiIgeTI9IjciPjwvbGluZT48L3N2Zz4=')] bg-no-repeat bg-right-bottom">
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                            <svg class="w-6 h-6 text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 5 18 3-9h5"></path></svg>
+                        </div>
+                        <span class="px-2 py-1 bg-indigo-500/20 text-indigo-300 text-[10px] font-bold uppercase rounded-md border border-indigo-500/20">Pro Engine</span>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-2">Faceless Video Engine</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-md">Our most advanced tool. Instantly generate a complete, highly-engaging visual storyboard, voiceover script, and B-roll prompts for faceless YouTube channels.</p>
+                    <div class="mt-auto text-indigo-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Engine <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 4: Video Idea Generator -->
+            <a href="https://ai-trend-radar-eight.vercel.app/video-idea-generator.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.25s; --hover-color: rgba(249, 115, 22, 0.4); --hover-shadow: rgba(249, 115, 22, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-5 group-hover:bg-orange-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1m-1.636 5.636l-.707-.707M3 12h1m1.636-5.636l.707.707M12 21v-1m-4.673-3A6 6 0 1 1 12 5a6 6 0 0 1 0 12z"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Video Idea Gen</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Generate highly clickable, proven video concepts tailored perfectly to your specific niche.</p>
+                    <div class="text-orange-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 5: Thumbnail Text Gen -->
+            <a href="https://ai-trend-radar-eight.vercel.app/thumbnail-generator.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.3s; --hover-color: rgba(244, 63, 94, 0.4); --hover-shadow: rgba(244, 63, 94, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-5 group-hover:bg-rose-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-rose-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Thumbnail Text</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Design high-CTR, big bold text concepts mathematically optimized for YouTube thumbnails.</p>
+                    <div class="text-rose-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 6: Script Generator -->
+            <a href="https://ai-trend-radar-eight.vercel.app/script-generator.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.35s; --hover-color: rgba(168, 85, 247, 0.4); --hover-shadow: rgba(168, 85, 247, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5 group-hover:bg-purple-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-purple-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Script Generator</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Build engaging outlines, killer 3-second hooks, and full video structures effortlessly.</p>
+                    <div class="text-purple-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 7: YouTube Title Generator -->
+            <a href="https://ai-trend-radar-eight.vercel.app/youtube-title-generator.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.4s; --hover-color: rgba(6, 182, 212, 0.4); --hover-shadow: rgba(6, 182, 212, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20V5H2v2zm0 10h20v-2H2v2zm0-5h20v-2H2v2z"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Title Generator</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Generate hyper-optimized, curiosity-driven titles that make people click instantly.</p>
+                    <div class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 8: Viral Score Checker -->
+            <a href="https://ai-trend-radar-eight.vercel.app/viral-score.html" class="tool-card rounded-3xl p-6 group block animate-fade-in-up" style="animation-delay: 0.45s; --hover-color: rgba(250, 204, 21, 0.4); --hover-shadow: rgba(250, 204, 21, 0.2);">
+                <div class="tool-content flex flex-col h-full">
+                    <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-5 group-hover:bg-yellow-500/20 transition-colors">
+                        <svg class="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-2">Viral Score Checker</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">Analyze your idea's true potential. Get a mathematical virality score before you hit record.</p>
+                    <div class="text-yellow-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Launch Tool <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-8 text-slate-500 text-sm relative z-10 border-t border-slate-800/60 mt-auto">
+        <p>&copy; 2026 AI Trend Radar Suite. Crafted for next-generation creators.</p>
+    </footer>
+
+    <!-- Interactive Mouse Glow Effect Script -->
+    <script>
+        document.getElementById("toolsGrid").onmousemove = e => {
+            for(const card of document.getElementsByClassName("tool-card")) {
+                const rect = card.getBoundingClientRect(),
+                      x = e.clientX - rect.left,
+                      y = e.clientY - rect.top;
+
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        }
+    </script>
+</body>
+    <meta name="google-site-verification" content="p2bqcY547c5C0jRk1OHr6VxH8CW3-QenVvPtb79iXR8" />
+</html>
+
