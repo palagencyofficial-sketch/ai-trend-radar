@@ -1,78 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>AI Viral Score</title>
-
-<style>
-
-body{
-font-family: Arial;
-background:#0f172a;
-color:white;
-text-align:center;
-padding:50px;
-}
-
-input{
-padding:10px;
-width:250px;
-}
-
-button{
-padding:10px 20px;
-background:#22c55e;
-border:none;
-color:white;
-cursor:pointer;
-margin-left:10px;
-}
-
-.result{
-margin-top:30px;
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>🔥 AI Viral Score</h1>
-
-<p>Check viral potential of your topic</p>
-
-<input id="topic" placeholder="Enter topic">
-<button onclick="checkViral()">Check Score</button>
-
-<div id="result"></div>
-
-<script>
-
 function checkViral(){
 
-let topic=document.getElementById("topic").value
+let topic=document.getElementById("topic").value.toLowerCase()
 
-let score=Math.floor(Math.random()*100)
+let score=30
+
+if(topic.includes("ai")) score+=40
+if(topic.includes("youtube")) score+=20
+if(topic.includes("money")) score+=20
+if(topic.includes("automation")) score+=20
+if(topic.includes("chatgpt")) score+=30
+
+if(score>100) score=100
 
 let competition="Medium"
 
-if(score>75){
-competition="Low"
-}
-
-if(score<40){
-competition="High"
-}
+if(score>70) competition="Low"
+if(score<40) competition="High"
 
 let platform="YouTube"
 
-if(score>70){
-platform="YouTube Shorts"
-}
+if(score>75) platform="YouTube Shorts"
+if(score>85) platform="TikTok"
 
 document.getElementById("result").innerHTML=
 `
@@ -92,8 +40,3 @@ document.getElementById("result").innerHTML=
 `
 
 }
-
-</script>
-
-</body>
-</html>
