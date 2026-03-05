@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020617">
 
 <title>AI Trend Radar Pro</title>
 
@@ -29,19 +29,18 @@ background-size:40px 40px;
 }
 
 .glass{
-background:rgba(15,23,42,0.75);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.05);
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.06);
 }
 
 .tool-card{
-transition:0.25s;
+transition:0.3s;
 }
 
 .tool-card:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 40px rgba(16,185,129,0.15);
+transform:translateY(-5px);
+border-color:#10b981;
 }
 
 </style>
@@ -61,8 +60,6 @@ box-shadow:0 20px 40px rgba(16,185,129,0.15);
 <i class="fas fa-satellite-dish text-emerald-400"></i>
 
 trend<span class="text-emerald-400">radar</span>
-
-<span class="text-xs bg-emerald-500 text-black px-2 py-0.5 rounded ml-2">PRO</span>
 
 </div>
 
@@ -89,7 +86,7 @@ trend<span class="text-emerald-400">radar</span>
 
 <!-- HERO -->
 
-<main class="pt-36 pb-20 px-4 max-w-5xl mx-auto text-center">
+<section class="pt-36 pb-16 text-center max-w-4xl mx-auto px-6">
 
 <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-emerald-400 bg-clip-text text-transparent">
 
@@ -97,9 +94,9 @@ AI Trend Radar Pro
 
 </h1>
 
-<p class="text-slate-400 mt-4 text-lg">
+<p class="text-slate-400 mt-6 text-lg">
 
-Discover viral content opportunities before they explode
+Discover viral content opportunities before they explode.
 
 </p>
 
@@ -110,13 +107,14 @@ Discover viral content opportunities before they explode
 
 <input id="topic"
 
-class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-lg"
+class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl"
 
 placeholder="Enter topic e.g AI Video">
 
+
 <button onclick="scanTrend()"
 
-class="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 transition py-4 rounded-xl text-black font-bold text-lg">
+class="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 py-4 rounded-xl text-black font-bold">
 
 Scan Trend
 
@@ -124,17 +122,19 @@ Scan Trend
 
 </div>
 
-</main>
+</section>
 
 
 <!-- RESULT -->
 
-<div id="result" class="max-w-3xl mx-auto px-6 text-center"></div>
+<div id="result"
+
+class="max-w-3xl mx-auto px-6 text-center"></div>
 
 
-<!-- CREATOR TOOLS -->
+<!-- TOOLS SECTION -->
 
-<section class="max-w-6xl mx-auto px-6 mt-20">
+<section class="mt-20 max-w-6xl mx-auto px-6">
 
 <h2 class="text-3xl font-bold text-center mb-10">
 
@@ -142,35 +142,53 @@ Creator AI Tools
 
 </h2>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-3 gap-6">
 
-<a href="script-generator.html" class="tool-card glass p-6 rounded-2xl text-center block">
+<a href="script-generator.html" class="glass tool-card p-6 rounded-2xl">
 
-<i class="fas fa-pen text-emerald-400 text-2xl mb-3"></i>
+<h3 class="text-xl font-bold mb-2">AI Script Generator</h3>
 
-<h3 class="font-bold text-lg">Script Generator</h3>
-
-<p class="text-sm text-slate-400 mt-2">Generate viral video scripts</p>
+<p class="text-slate-400 text-sm">Generate viral video scripts instantly.</p>
 
 </a>
 
-<a href="video-idea-generator.html" class="tool-card glass p-6 rounded-2xl text-center block">
+<a href="video-idea-generator.html" class="glass tool-card p-6 rounded-2xl">
 
-<i class="fas fa-lightbulb text-emerald-400 text-2xl mb-3"></i>
+<h3 class="text-xl font-bold mb-2">Video Idea Generator</h3>
 
-<h3 class="font-bold text-lg">Video Ideas</h3>
-
-<p class="text-sm text-slate-400 mt-2">Find new video ideas instantly</p>
+<p class="text-slate-400 text-sm">Find unlimited content ideas.</p>
 
 </a>
 
-<a href="thumbnail-generator.html" class="tool-card glass p-6 rounded-2xl text-center block">
+<a href="thumbnail-generator.html" class="glass tool-card p-6 rounded-2xl">
 
-<i class="fas fa-image text-emerald-400 text-2xl mb-3"></i>
+<h3 class="text-xl font-bold mb-2">Thumbnail Tool</h3>
 
-<h3 class="font-bold text-lg">Thumbnail Tool</h3>
+<p class="text-slate-400 text-sm">Create high CTR thumbnails.</p>
 
-<p class="text-sm text-slate-400 mt-2">Create click-worthy thumbnails</p>
+</a>
+
+<a href="viral-score.html" class="glass tool-card p-6 rounded-2xl">
+
+<h3 class="text-xl font-bold mb-2">Viral Score Tool</h3>
+
+<p class="text-slate-400 text-sm">Predict content viral potential.</p>
+
+</a>
+
+<a href="trending.html" class="glass tool-card p-6 rounded-2xl">
+
+<h3 class="text-xl font-bold mb-2">Trending Topics</h3>
+
+<p class="text-slate-400 text-sm">Discover what’s trending right now.</p>
+
+</a>
+
+<a href="seo.html" class="glass tool-card p-6 rounded-2xl">
+
+<h3 class="text-xl font-bold mb-2">SEO Generator</h3>
+
+<p class="text-slate-400 text-sm">Generate SEO tags & keywords.</p>
 
 </a>
 
@@ -181,13 +199,13 @@ Creator AI Tools
 
 <!-- FOOTER -->
 
-<footer class="mt-24 pb-10 text-center text-slate-500 text-sm">
+<footer class="mt-24 border-t border-slate-800 py-10 text-center">
 
-Built with AI • Creator Tools Platform
+<p class="text-slate-500">
 
-<br>
+Built with ❤️ by <span class="text-emerald-400 font-semibold">Khokon Pal</span>
 
-<span class="text-emerald-400 font-semibold">Khokon Pal</span>
+</p>
 
 </footer>
 
@@ -202,7 +220,7 @@ const supabaseClient = supabase.createClient(
 
 "https://zztusowpoaobaitkwugz.supabase.co",
 
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzQwODkyMDAwLAogICJleHAiOiAxODk4NjU4NDAwCn0.8Nc3iQ6gC5E9gV5LvKJX0nzZk2cYv1bM2tX3oF8sY1c"
 
 )
 
@@ -225,22 +243,19 @@ if(topic.includes("youtube")) score+=20
 if(topic.includes("tiktok")) score+=30
 
 let competition="Medium"
-
 if(score<50) competition="Low"
-
 if(score>70) competition="High"
 
 let platform="YouTube"
 
 if(score>85) platform="TikTok"
-
 if(score>75) platform="YouTube Shorts"
 
 document.getElementById("result").innerHTML=
 
 `<div class="glass p-8 rounded-3xl mt-10">
 
-<h2 class="text-2xl font-bold mb-4 capitalize">${topic}</h2>
+<h2 class="text-2xl font-bold mb-4">${topic}</h2>
 
 <p class="text-lg">Viral Score: <b>${score}/100</b></p>
 
@@ -253,6 +268,7 @@ document.getElementById("result").innerHTML=
 }
 
 </script>
+
 
 </body>
 </html>
