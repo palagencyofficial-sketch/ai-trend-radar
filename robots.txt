@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ai-trend-radar-eight.vercel.app/sitemap.xml
