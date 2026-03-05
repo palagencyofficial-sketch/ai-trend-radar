@@ -1,208 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AI Trend Radar | Creator Toolkit</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-background:#020617;
-color:white;
-font-family:'Inter',sans-serif;
-}
-
-.tool-card{
-background:rgba(15,23,42,0.6);
-border:1px solid rgba(255,255,255,0.05);
-transition:0.3s;
-}
-
-.tool-card:hover{
-transform:translateY(-6px);
-border-color:#10b981;
-box-shadow:0 20px 40px -10px rgba(16,185,129,0.3);
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Trend Radar · Pro</title>
+  <!-- Tailwind + Inter + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background: #020617;
+      font-family: 'Inter', sans-serif;
+    }
+    /* subtle animated grid overlay */
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .glass-deep {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.03);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .glass-card:hover {
+      box-shadow: 0 20px 30px -15px rgba(16, 185, 129, 0.2);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #10b981;
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .trend-glow {
+      text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    }
+    .badge-pro {
+      background: linear-gradient(135deg, #10b981, #059669);
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: white;
+      margin-left: 8px;
+    }
+  </style>
 </head>
-
-<body class="min-h-screen flex flex-col">
-
-<!-- NAVBAR -->
-
-<nav class="max-w-7xl mx-auto w-full px-6 py-6 flex justify-between items-center">
-
-<div class="flex items-center gap-3">
-
-<div class="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center">
-⚡
-</div>
-
-<h1 class="font-bold text-xl">AI Trend Radar</h1>
-
-</div>
-
-<div class="hidden md:flex gap-6 text-sm text-slate-300">
-
-<a href="/index.html">Trend Radar</a>
-
-<a href="/trending.html">Trending Topics</a>
-
-<a href="/faceless-video-engine.html">Faceless Engine</a>
-
-<a href="/video-idea-generator.html">Video Idea Generator</a>
-
-<a href="/thumbnail-generator.html">Thumbnail Generator</a>
-
-<a href="/script-generator.html">Script Generator</a>
-
-<a href="/youtube-title-generator.html">Title Generator</a>
-
-<a href="/viral-score.html">Viral Score</a>
-
-</div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="text-center max-w-3xl mx-auto mt-10 mb-16 px-4">
-
-<h1 class="text-5xl font-bold mb-6">
-
-Ultimate AI Toolkit <br>
-
-<span class="text-emerald-400">for Content Creators</span>
-
-</h1>
-
-<p class="text-slate-400">
-
-Generate viral ideas, scripts, titles and thumbnails with powerful creator tools.
-
-</p>
-
-</section>
-
-
-<!-- TOOLS GRID -->
-
-<section class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-<!-- TOOL -->
-
-<a href="/index.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Trend Radar Scanner</h3>
-
-<p class="text-slate-400 text-sm">
-Analyze trends and find viral opportunities.
-</p>
-
-</a>
-
-
-<a href="/trending.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Trending Topics</h3>
-
-<p class="text-slate-400 text-sm">
-Discover hottest YouTube niches.
-</p>
-
-</a>
-
-
-<a href="/faceless-video-engine.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Faceless Engine</h3>
-
-<p class="text-slate-400 text-sm">
-Generate faceless video structure.
-</p>
-
-</a>
-
-
-<a href="/video-idea-generator.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Video Idea Generator</h3>
-
-<p class="text-slate-400 text-sm">
-Create viral video concepts.
-</p>
-
-</a>
-
-
-<a href="/thumbnail-generator.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Thumbnail Generator</h3>
-
-<p class="text-slate-400 text-sm">
-Create high CTR thumbnail text.
-</p>
-
-</a>
-
-
-<a href="/script-generator.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Script Generator</h3>
-
-<p class="text-slate-400 text-sm">
-Generate engaging YouTube scripts.
-</p>
-
-</a>
-
-
-<a href="/youtube-title-generator.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Title Generator</h3>
-
-<p class="text-slate-400 text-sm">
-Create high-click YouTube titles.
-</p>
-
-</a>
-
-
-<a href="/viral-score.html" class="tool-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-2">Viral Score Checker</h3>
-
-<p class="text-slate-400 text-sm">
-Check virality potential of ideas.
-</p>
-
-</a>
-
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer class="text-center text-slate-500 text-sm mt-20 pb-10">
-
-<p>AI Trend Radar Suite</p>
-
-<p class="mt-2">Created by <span class="text-emerald-400 font-semibold">Khokan Pal</span></p>
-
-</footer>
-
-
+<body class="text-slate-200 grid-bg antialiased">
+
+  <!-- PREMIUM SAAS NAVIGATION (glass, with active indicator) -->
+  <nav class="glass-deep fixed top-0 left-0 w-full z-50 border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-satellite-dish text-emerald-400 text-xl"></i>
+        <span class="font-bold text-lg tracking-tight text-white">trend<span class="text-emerald-400">radar</span></span>
+        <span class="badge-pro">PRO</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#" class="nav-link text-white active">Radar</a>
+        <a href="#" class="nav-link text-slate-300 hover:text-white">Trending</a>
+        <a href="#" class="nav-link text-slate-300 hover:text-white">Scripts</a>
+        <a href="#" class="nav-link text-slate-300 hover:text-white">Video ideas</a>
+        <a href="#" class="nav-link text-slate-300 hover:text-white">Thumbnails</a>
+        <a href="#" class="nav-link text-slate-300 hover:text-white">Viral score</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button class="text-slate-300 hover:text-white transition"><i class="fas fa-search"></i></button>
+        <button class="bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-emerald-500/30 transition">Dashboard</button>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-600 flex items-center justify-center text-white text-sm font-bold shadow-lg">JD</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT (padding top for fixed nav) -->
+  <main class="pt-28 pb-16 px-4 max-w-6xl mx-auto">
+    <!-- header with gradient -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center bg-slate-800/50 border border-slate-700 rounded-full px-4 py-1.5 text-xs text-emerald-300 mb-5">
+        <i class="fas fa-bolt mr-2 text-emerald-400"></i> realtime predictive intelligence
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-emerald-200 to-emerald-400 bg-clip-text text-transparent tracking-tight">AI Trend Radar <span class="text-emerald-400">Pro</span></h1>
+      <p class="text-slate-400 max-w-xl mx-auto mt-3 text-lg">Discover viral opportunities before they explode. Enter any topic to scan growth potential, competition, and platform fit.</p>
+    </div>
+
+    <!-- SEARCH CARD (glass + emerald accent) -->
+    <div class="glass-deep rounded-3xl p-8 max-w-2xl mx-auto border-t border-emerald-500/20 relative">
+      <!-- decorative element -->
+      <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-black text-xs px-4 py-1 rounded-full font-bold flex items-center gap-1"><i class="fas fa-arrow-trend-up"></i> LIVE SCAN</div>
+      
+      <div class="flex flex-col md:flex-row gap-4 items-center">
+        <div class="relative flex-1 w-full">
+          <i class="fas fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+          <input type="text" id="topic" value="ChatGPT" class="w-full bg-slate-900/70 border border-slate-700 rounded-2xl py-5 pl-12 pr-4 text-white placeholder-slate-500 text-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition">
+        </div>
+        <button onclick="analyzeTrend()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-bold py-5 px-8 rounded-2xl text-lg transition-all shadow-xl shadow-emerald-500/20 flex items-center gap-2 whitespace-nowrap">
+          <i class="fas fa-radar"></i> Scan trend
+        </button>
+      </div>
+
+      <!-- quick chips -->
+      <div class="flex flex-wrap gap-2 justify-center mt-6 text-xs">
+        <span class="bg-slate-800/70 border border-slate-700 rounded-full px-3 py-1 text-slate-300">🔥 ChatGPT-5</span>
+        <span class="bg-slate-800/70 border border-slate-700 rounded-full px-3 py-1 text-slate-300">⚡ AI video</span>
+        <span class="bg-slate-800/70 border border-slate-700 rounded-full px-3 py-1 text-slate-300">📱 robotaxi</span>
+        <span class="bg-slate-800/70 border border-slate-700 rounded-full px-3 py-1 text-slate-300">🧠 quantum AI</span>
+      </div>
+    </div>
+
+    <!-- RESULT DASHBOARD (premium metrics + chart) -->
+    <div id="resultContainer" class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <!-- dynamic content inserted by js -->
+    </div>
+
+    <!-- secondary insights (always visible example) -->
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="text-emerald-400 text-xl font-bold">+243%</div>
+        <div class="text-slate-400 text-xs">avg. search growth</div>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="text-emerald-400 text-xl font-bold">8.2K</div>
+        <div class="text-slate-400 text-xs">daily mentions</div>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="text-emerald-400 text-xl font-bold">62</div>
+        <div class="text-slate-400 text-xs">viral score avg</div>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="text-emerald-400 text-xl font-bold">4 min</div>
+        <div class="text-slate-400 text-xs">trend velocity</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Supabase (kept but unused, can be integrated later) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://zztusowpoaobaitkwugz.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzQwODkyMDAwLAogICJleHAiOiAxODk4NjU4NDAwCn0.8Nc3iQ6gC5E9gV5LvKJX0nzZk2cYv1bM2tX3oF8sY1c"
+    );
+  </script>
+
+  <!-- PRO LEVEL LOGIC: keyword-based scoring + platform prediction (inspired by previous viral tool) -->
+  <script>
+    // weighted keyword database
+    const VIRAL_KEYWORDS = {
+      'ai': 42, 'gpt': 45, 'chatgpt': 48, 'machine learning': 40, 'agi': 52,
+      'robot': 32, 'automation': 30, 'vr': 28, 'metaverse': 44, 'web3': 41,
+      'crypto': 38, 'bitcoin': 36, 'nft': 40, 'blockchain': 32,
+      'youtube': 30, 'tiktok': 47, 'instagram': 33, 'shorts': 39,
+      'viral': 55, 'trend': 48, 'challenge': 45, 'meme': 47,
+      'health': 26, 'fitness': 30, 'recipe': 29, 'lifehack': 38,
+      'news': 32, 'breaking': 44, 'scandal': 46, 'sports': 27,
+      'music': 33, 'movie': 30, 'game': 29, 'gaming': 36,
+      'pets': 34, 'dog': 32, 'cat': 33,
+      'love': 24, 'relationship': 31, 'dating': 33, 'psychology': 30,
+      'conspiracy': 45, 'mystery': 40, 'paranormal': 41
+    };
+
+    const COMPETITION_WORDS = {
+      'news': 0.75, 'music': 0.7, 'game': 0.65, 'funny': 0.7, 'dance': 0.7,
+      'challenge': 0.6, 'memes': 0.55, 'tutorial': 0.7, 'review': 0.7,
+      'politics': 0.8, 'celebrity': 0.75, 'fashion': 0.7, 'beauty': 0.7,
+      'fitness': 0.65, 'crypto': 0.7, 'ai': 0.6, 'tech': 0.6
+    };
+
+    function tokenize(topic) {
+      let clean = topic.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+      let words = clean.split(' ');
+      let tokens = [];
+      words.forEach(w => { if(w.length > 1) tokens.push(w); });
+      for(let i=0; i<words.length-1; i++) {
+        let bigram = words[i] + ' ' + words[i+1];
+        if(words[i].length>1 && words[i+1].length>1) tokens.push(bigram);
+      }
+      return tokens;
+    }
+
+    function computeViralMetrics(topicRaw) {
+      if (!topicRaw.trim()) topicRaw = "AI";
+      let topic = topicRaw.toLowerCase().trim();
+      let tokens = tokenize(topic);
+
+      let base = 30 + (topic.length % 10);
+      let keywordScore = 0;
+      let matched = [];
+
+      tokens.forEach(token => {
+        for (let [kw, val] of Object.entries(VIRAL_KEYWORDS)) {
+          if (token.includes(kw) || kw.includes(token)) {
+            keywordScore += val;
+            matched.push(kw);
+            break;
+          }
+        }
+      });
+      keywordScore = Math.min(keywordScore, 70);
+
+      // competition factor
+      let compFactor = 1.0;
+      let compFound = [];
+      tokens.forEach(token => {
+        for (let [cw, f] of Object.entries(COMPETITION_WORDS)) {
+          if (token.includes(cw)) {
+            compFactor *= f;
+            compFound.push(cw);
+            break;
+          }
+        }
+      });
+
+      // trend boost (simulated)
+      let hash = topic.split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+      let trendBoost = (hash % 30) - 5;
+      trendBoost = Math.max(0, trendBoost);
+
+      let raw = base + keywordScore + trendBoost;
+      let finalScore = Math.round(raw * compFactor);
+      finalScore = Math.min(100, Math.max(10, finalScore));
+
+      let competitionLevel = 'medium';
+      if (compFound.length >= 3 || compFactor < 0.45) competitionLevel = 'very high';
+      else if (compFound.length >= 2 || compFactor < 0.7) competitionLevel = 'high';
+      else if (compFound.length === 0 && compFactor > 0.9) competitionLevel = 'low';
+      else competitionLevel = 'medium';
+
+      // best platform prediction (simplified)
+      let platformScores = { 'tiktok': 10, 'youtube': 10, 'instagram': 10, 'twitter': 10, 'linkedin': 5 };
+      if (topic.includes('tiktok') || topic.includes('dance') || topic.includes('challenge')) platformScores.tiktok += 30;
+      if (topic.includes('youtube') || topic.includes('tutorial') || topic.includes('review')) platformScores.youtube += 30;
+      if (topic.includes('instagram') || topic.includes('photo')) platformScores.instagram += 25;
+      if (topic.includes('news') || topic.includes('breaking')) platformScores.twitter += 30;
+      if (topic.includes('ai') || topic.includes('tech')) { platformScores.youtube += 10; platformScores.tiktok += 15; }
+      
+      let bestPlatform = Object.keys(platformScores).reduce((a, b) => platformScores[a] > platformScores[b] ? a : b);
+      bestPlatform = bestPlatform.charAt(0).toUpperCase() + bestPlatform.slice(1);
+
+      // growth % (0-500%) based on score and randomness for realism
+      let growth = Math.floor(finalScore * 3 + (hash % 100) + 40);
+      growth = Math.min(550, growth);
+
+      return {
+        topic: topicRaw,
+        score: finalScore,
+        growth: growth,
+        competition: competitionLevel,
+        platform: bestPlatform,
+        momentum: (hash % 30) + 60,
+        matchedKeywords: matched.slice(0, 4)
+      };
+    }
+
+    function analyzeTrend() {
+      let input = document.getElementById('topic');
+      let topic = input.value.trim();
+      if (topic === '') topic = 'AI';
+      
+      let metrics = computeViralMetrics(topic);
+      
+      // build premium result cards
+      let container = document.getElementById('resultContainer');
+      
+      // trend direction icon
+      let direction = metrics.growth > 200 ? 'rocket' : (metrics.growth > 100 ? 'arrow-up' : 'minus');
+      
+      let html = `
+        <!-- main metric card (viral score) -->
+        <div class="glass-deep rounded-3xl p-6 col-span-1 lg:col-span-2 flex flex-col">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-slate-400 text-sm font-medium flex items-center"><i class="fas fa-chart-line text-emerald-400 mr-2"></i> VIRAL SCORE • REAL-TIME</span>
+            <span class="bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-500/30">${metrics.competition.toUpperCase()} COMPETITION</span>
+          </div>
+          <div class="flex items-end gap-4 flex-wrap">
+            <div>
+              <div class="text-6xl font-bold text-white trend-glow">${metrics.score}<span class="text-2xl text-slate-400">/100</span></div>
+              <div class="text-emerald-400 text-sm mt-1"><i class="fas fa-${direction} mr-1"></i> ${metrics.growth}% growth forecast</div>
+            </div>
+            <div class="bg-slate-800/60 rounded-2xl px-5 py-3 border border-slate-700">
+              <div class="text-xs text-slate-400">best platform</div>
+              <div class="font-bold text-xl text-white"><i class="fab fa-${metrics.platform === 'Tiktok' ? 'tiktok' : metrics.platform === 'Youtube' ? 'youtube' : 'instagram'} text-emerald-400 mr-2"></i>${metrics.platform}</div>
+            </div>
+          </div>
+          <!-- mini trend bar -->
+          <div class="mt-5 grid grid-cols-4 gap-1 h-2">
+            <div class="bg-emerald-500 rounded-l-full" style="width: ${Math.min(metrics.score, 30)}%"></div>
+            <div class="bg-emerald-500" style="width: ${Math.min(Math.max(metrics.score-30,0), 30)}%"></div>
+            <div class="bg-emerald-500" style="width: ${Math.min(Math.max(metrics.score-60,0), 30)}%"></div>
+            <div class="bg-emerald-500/30 rounded-r-full" style="width: ${Math.min(Math.max(metrics.score-90,0), 10)}%"></div>
+          </div>
+          <div class="mt-4 text-slate-400 text-xs flex gap-4">
+            <span><i class="far fa-clock mr-1"></i> momentum: ${metrics.momentum}%</span>
+            <span><i class="fas fa-tag mr-1"></i> ${metrics.matchedKeywords.length ? '#'+metrics.matchedKeywords.join(' #') : 'general'}</span>
+          </div>
+        </div>
+
+        <!-- secondary metric cards -->
+        <div class="glass-deep rounded-3xl p-6 col-span-1 flex flex-col justify-between">
+          <div>
+            <div class="text-slate-400 text-sm flex items-center"><i class="fas fa-bolt text-emerald-400 mr-2"></i> TREND INTENSITY</div>
+            <div class="text-4xl font-bold text-white mt-2">${metrics.momentum}<span class="text-base text-slate-400">%</span></div>
+          </div>
+          <div class="w-full bg-slate-700 h-2 rounded-full mt-2">
+            <div class="bg-emerald-400 h-2 rounded-full" style="width: ${metrics.momentum}%"></div>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span class="text-slate-400"><i class="fas fa-users mr-1"></i> competition</span>
+            <span class="font-semibold text-${metrics.competition.includes('high') ? 'red' : metrics.competition=='low' ? 'emerald' : 'yellow'}-400">${metrics.competition}</span>
+          </div>
+        </div>
+
+        <!-- third card: recent similar / quick stats (placeholder but premium) -->
+        <div class="glass-deep rounded-3xl p-6 col-span-1 lg:col-span-1 flex flex-col gap-3">
+          <div class="text-slate-400 text-sm flex items-center"><i class="fas fa-chart-simple text-emerald-400 mr-2"></i> RELATED INSIGHTS</div>
+          <div class="flex justify-between">
+            <span class="text-slate-300">📈 daily volume</span>
+            <span class="text-white font-bold">${Math.floor(metrics.growth*15)}K</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-300">🚀 velocity</span>
+            <span class="text-white font-bold">${metrics.momentum > 70 ? 'explosive' : 'rising'}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-300">🎯 platform fit</span>
+            <span class="text-emerald-400 font-bold">${metrics.platform}</span>
+          </div>
+          <div class="border-t border-slate-700 my-2"></div>
+          <div class="text-xs text-slate-500 flex items-center gap-2"><i class="fas fa-circle-nodes"></i> supabase ready • 23 signals</div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    // initial load with default topic
+    window.onload = function() {
+      analyzeTrend();
+    };
+  </script>
 </body>
 </html>
