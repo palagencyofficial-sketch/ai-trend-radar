@@ -63,19 +63,19 @@ trend<span class="text-emerald-400">radar</span>
 
 </div>
 
-<div class="hidden md:flex gap-6 text-sm">
+<div class="flex gap-6 text-sm">
 
-<a href="index.html">Radar</a>
+<a href="/">Radar</a>
 
-<a href="trending.html">Trending</a>
+<a href="/trending.html">Trending</a>
 
-<a href="script-generator.html">Scripts</a>
+<a href="/script-generator.html">Scripts</a>
 
-<a href="video-idea-generator.html">Video Ideas</a>
+<a href="/video-idea-generator.html">Video Ideas</a>
 
-<a href="thumbnail-generator.html">Thumbnails</a>
+<a href="/thumbnail-generator.html">Thumbnails</a>
 
-<a href="viral-score.html">Viral Score</a>
+<a href="/viral-score.html">Viral Score</a>
 
 </div>
 
@@ -96,7 +96,7 @@ AI Trend Radar Pro
 
 <p class="text-slate-400 mt-6 text-lg">
 
-Discover viral content opportunities before they explode.
+Discover viral opportunities before they explode
 
 </p>
 
@@ -144,7 +144,7 @@ Creator AI Tools
 
 <div class="grid md:grid-cols-3 gap-6">
 
-<a href="script-generator.html" class="glass tool-card p-6 rounded-2xl">
+<a href="/script-generator.html" class="glass tool-card p-6 rounded-2xl">
 
 <h3 class="text-xl font-bold mb-2">AI Script Generator</h3>
 
@@ -152,7 +152,7 @@ Creator AI Tools
 
 </a>
 
-<a href="video-idea-generator.html" class="glass tool-card p-6 rounded-2xl">
+<a href="/video-idea-generator.html" class="glass tool-card p-6 rounded-2xl">
 
 <h3 class="text-xl font-bold mb-2">Video Idea Generator</h3>
 
@@ -160,7 +160,7 @@ Creator AI Tools
 
 </a>
 
-<a href="thumbnail-generator.html" class="glass tool-card p-6 rounded-2xl">
+<a href="/thumbnail-generator.html" class="glass tool-card p-6 rounded-2xl">
 
 <h3 class="text-xl font-bold mb-2">Thumbnail Tool</h3>
 
@@ -168,7 +168,7 @@ Creator AI Tools
 
 </a>
 
-<a href="viral-score.html" class="glass tool-card p-6 rounded-2xl">
+<a href="/viral-score.html" class="glass tool-card p-6 rounded-2xl">
 
 <h3 class="text-xl font-bold mb-2">Viral Score Tool</h3>
 
@@ -176,19 +176,11 @@ Creator AI Tools
 
 </a>
 
-<a href="trending.html" class="glass tool-card p-6 rounded-2xl">
+<a href="/trending.html" class="glass tool-card p-6 rounded-2xl">
 
 <h3 class="text-xl font-bold mb-2">Trending Topics</h3>
 
-<p class="text-slate-400 text-sm">Discover what’s trending right now.</p>
-
-</a>
-
-<a href="seo.html" class="glass tool-card p-6 rounded-2xl">
-
-<h3 class="text-xl font-bold mb-2">SEO Generator</h3>
-
-<p class="text-slate-400 text-sm">Generate SEO tags & keywords.</p>
+<p class="text-slate-400 text-sm">Discover what’s trending now.</p>
 
 </a>
 
@@ -210,23 +202,6 @@ Built with ❤️ by <span class="text-emerald-400 font-semibold">Khokon Pal</sp
 </footer>
 
 
-<!-- SUPABASE -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const supabaseClient = supabase.createClient(
-
-"https://zztusowpoaobaitkwugz.supabase.co",
-
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzQwODkyMDAwLAogICJleHAiOiAxODk4NjU4NDAwCn0.8Nc3iQ6gC5E9gV5LvKJX0nzZk2cYv1bM2tX3oF8sY1c"
-
-)
-
-</script>
-
-
 <!-- VIRAL ENGINE -->
 
 <script>
@@ -243,12 +218,15 @@ if(topic.includes("youtube")) score+=20
 if(topic.includes("tiktok")) score+=30
 
 let competition="Medium"
+
 if(score<50) competition="Low"
+
 if(score>70) competition="High"
 
 let platform="YouTube"
 
 if(score>85) platform="TikTok"
+
 if(score>75) platform="YouTube Shorts"
 
 document.getElementById("result").innerHTML=
