@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trend Radar - Pro</title>
+    <!-- Tailwind CSS for professional styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#10b981', // Emerald 500
+                            600: '#059669', // Emerald 600
+                        }
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom styles for glassmorphism and smooth transitions */
+        body {
+            background-color: #020617;
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 70%);
+            min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .score-bar {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Hide scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-slate-200 font-sans flex flex-col items-center justify-center p-4 sm:p-8">
+<div style="margin-bottom:30px">
+
+<a href="index.html" style="color:white;margin:10px">Home</a>
+
+<a href="trending.html" style="color:white;margin:10px">Trending Topics</a>
+
+<a href="script-generator.html" style="color:white;margin:10px">Script Generator</a>
+
+</div>
+    <!-- Main Container -->
+    <div class="w-full max-w-lg relative">
+        
+        <!-- Background Glow Effect -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl blur opacity-20"></div>
+
+        <!-- App Interface -->
+        <div class="glass-card rounded-3xl p-8 relative shadow-2xl">
+            
+            <!-- Header Section -->
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center justify-center p-3 bg-slate-800/50 rounded-2xl mb-4 border border-slate-700">
+                    <!-- Radar Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"></path>
+                        <path d="M4 5.49A10 10 0 0 0 4.93 19.07"></path>
+                        <path d="M22 12A10 10 0 0 0 19.07 4.93"></path>
+                        <path d="M22 12a10 10 0 0 1-2.93 7.07"></path>
+                        <path d="M16.24 7.76A6 6 0 0 0 9.88 6.5"></path>
+                        <path d="M8 8.12A6 6 0 0 0 7.76 16.24"></path>
+                        <path d="M20 12a6 6 0 0 0-3.76-5.56"></path>
+                        <path d="M20 12a6 6 0 0 1-3.76 5.56"></path>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 mb-2">
+                    AI Trend Radar
+                </h1>
+                <p class="text-slate-400 text-sm">Discover viral content opportunities</p>
+            </div>
+
+            <!-- Input Section -->
+            <div class="space-y-4">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <!-- Search Icon -->
+                        <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="topic" 
+                        class="block w-full pl-11 pr-4 py-4 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all"
+                        placeholder="Enter topic (e.g. ChatGPT, AI Video)..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <button 
+                    id="scanBtn"
+                    onclick="startScan()" 
+                    class="w-full bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-emerald-500 hover:to-brand-400 text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-emerald-900/20 transition-all active:scale-[0.98] flex justify-center items-center gap-2"
+                >
+                    <span id="btnText">Scan Trend</span>
+                    <!-- Loader Icon (Hidden default) -->
+                    <svg id="btnLoader" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="scanningState" class="hidden mt-8 text-center animate-pulse-fast">
+                <p class="text-emerald-400 text-sm font-medium">Analyzing trend data...</p>
+                <div class="w-full bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+                    <div class="bg-emerald-500 h-full w-1/2 animate-[ping_1.5s_ease-in-out_infinite] rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div id="resultArea" class="hidden mt-8 opacity-0 transition-opacity duration-500">
+                <div class="pt-6 border-t border-slate-700/50">
+                    
+                    <h2 id="resTopic" class="text-xl font-bold text-white mb-6 capitalize flex items-center gap-2">
+                        <!-- Filled by JS -->
+                    </h2>
+
+                    <!-- Metrics Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Growth Card -->
+                        <div class="bg-slate-800/40 border border-slate-700 rounded-xl p-4 flex flex-col justify-between">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-slate-400 text-sm font-medium">Growth Rate</span>
+                                <div class="p-1.5 bg-emerald-500/10 rounded-lg text-emerald-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                                </div>
+                            </div>
+                            <div class="flex items-baseline gap-1">
+                                <span id="resGrowth" class="text-3xl font-bold text-white">0</span>
+                                <span class="text-emerald-400 font-semibold">%</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Past 7 days</p>
+                        </div>
+
+                        <!-- Score Card -->
+                        <div class="bg-slate-800/40 border border-slate-700 rounded-xl p-4 flex flex-col justify-between">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-slate-400 text-sm font-medium">Opportunity Score</span>
+                                <div class="p-1.5 bg-cyan-500/10 rounded-lg text-cyan-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                                </div>
+                            </div>
+                            <div class="flex items-baseline gap-1">
+                                <span id="resScore" class="text-3xl font-bold text-white">0</span>
+                                <span class="text-slate-500 text-sm">/ 100</span>
+                            </div>
+                            
+                            <!-- Progress Bar -->
+                            <div class="w-full bg-slate-700 h-1.5 rounded-full mt-3">
+                                <div id="scoreBar" class="bg-cyan-400 h-full rounded-full score-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Verdict -->
+                    <div id="verdictBox" class="mt-4 p-3 rounded-lg text-sm text-center font-medium">
+                        <!-- Filled by JS -->
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+    function startScan() {
+        const inputEl = document.getElementById("topic");
+        let topic = inputEl.value.trim();
+        
+        if (!topic) {
+            topic = "General AI"; 
+            inputEl.value = topic;
+        }
+
+        const btn = document.getElementById("scanBtn");
+        const btnText = document.getElementById("btnText");
+        const btnLoader = document.getElementById("btnLoader");
+        const scanningState = document.getElementById("scanningState");
+        const resultArea = document.getElementById("resultArea");
+
+        // UI Reset & Loading State
+        btn.disabled = true;
+        btn.classList.add("opacity-80", "cursor-not-allowed");
+        btnText.innerText = "Scanning...";
+        btnLoader.classList.remove("hidden");
+        
+        resultArea.classList.remove("opacity-100");
+        resultArea.classList.add("hidden");
+        scanningState.classList.remove("hidden");
+        
+        // Reset progress bar
+        document.getElementById("scoreBar").style.width = '0%';
+
+        // Simulate API call delay (1.5s)
+        setTimeout(() => {
+            generateResults(topic);
+            
+            // Revert Button State
+            btn.disabled = false;
+            btn.classList.remove("opacity-80", "cursor-not-allowed");
+            btnText.innerText = "Scan Again";
+            btnLoader.classList.add("hidden");
+            
+            // Show Results
+            scanningState.classList.add("hidden");
+            resultArea.classList.remove("hidden");
+            
+            // Small delay to allow CSS transition to work
+            setTimeout(() => {
+                resultArea.classList.add("opacity-100");
+            }, 50);
+
+        }, 1500);
+    }
+
+    function generateResults(topic) {
+        // Generate random metrics
+        let growth = Math.floor(Math.random() * 500) + 50; // 50 to 550
+        let score = Math.floor(Math.random() * 60) + 40; // 40 to 100
+
+        // Update DOM Elements
+        document.getElementById("resTopic").innerText = `🎯 Topic: ${topic}`;
+        
+        // Animate numbers (simple implementation)
+        animateValue("resGrowth", 0, growth, 1000);
+        animateValue("resScore", 0, score, 1000);
+
+        // Animate Progress Bar
+        setTimeout(() => {
+            document.getElementById("scoreBar").style.width = `${score}%`;
+        }, 100);
+
+        // Generate Verdict logic
+        const verdictBox = document.getElementById("verdictBox");
+        if (score >= 80) {
+            verdictBox.className = "mt-4 p-3 rounded-lg text-sm text-center font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+            verdictBox.innerText = "🔥 High viral potential! Great time to create content.";
+        } else if (score >= 60) {
+            verdictBox.className = "mt-4 p-3 rounded-lg text-sm text-center font-medium bg-cyan-500/20 text-cyan-400 border border-cyan-500/30";
+            verdictBox.innerText = "📈 Solid trend ongoing. Good opportunity to capitalize.";
+        } else {
+            verdictBox.className = "mt-4 p-3 rounded-lg text-sm text-center font-medium bg-slate-700/50 text-slate-300 border border-slate-600";
+            verdictBox.innerText = "⚠️ Trend momentum is low. Consider exploring other topics.";
+        }
+    }
+
+    // Helper function to animate number counting up
+    function animateValue(id, start, end, duration) {
+        if (start === end) return;
+        var range = end - start;
+        var current = start;
+        var increment = end > start ? 1 : -1;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var obj = document.getElementById(id);
+        
+        // Limit step time to avoid performance issues
+        if (stepTime < 10) {
+            stepTime = 10;
+            increment = Math.ceil(range / (duration / stepTime));
+        }
+
+        var timer = setInterval(function() {
+            current += increment;
+            if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                current = end;
+                clearInterval(timer);
+            }
+            obj.innerHTML = current;
+        }, stepTime);
+    }
+</script>
+
+</body>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+
+const supabaseClient = supabase.createClient(
+"`postgresql://postgres:[YOUR-PASSWORD]@db.zztusowpoaobaitkwugz.supabase.co:5432/postgres`",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6dHVzb3dwb2FvYmFpdGt3dWd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2NDkwNTMsImV4cCI6MjA4ODIyNTA1M30.xyChEQBMGnC6yzWBXN-zm3a4lS-ZzD2vEIVw6qs7Crc"
+)
+
+</script> 
+</html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+
+const supabaseClient = supabase.createClient(
+"`postgresql://postgres:[YOUR-PASSWORD]@db.zztusowpoaobaitkwugz.supabase.co:5432/postgres`",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6dHVzb3dwb2FvYmFpdGt3dWd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2NDkwNTMsImV4cCI6MjA4ODIyNTA1M30.xyChEQBMGnC6yzWBXN-zm3a4lS-ZzD2vEIVw6qs7Crc"
+)
+
+</script>
+
+
