@@ -3,174 +3,205 @@
 
 <head>
 
-<meta name="google-site-verification" content="p2bqcY547c5C0jRk1OHr6VxH8CW3-QenVvPtb79iXR8" />
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Trend Radar - Pro</title>
+<title>AI Trend Radar | Creator Toolkit</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<script>
-
-tailwind.config = {
-theme: {
-extend: {
-fontFamily: {
-sans: ['Inter','sans-serif'],
-},
-colors:{
-brand:{
-500:'#10b981',
-600:'#059669'
-}
-}
-}
-}
-}
-
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-background-color:#020617;
-background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 70%);
-min-height:100vh;
+background:#020617;
+color:white;
+font-family:'Inter',sans-serif;
 }
 
-.glass-card{
-background:rgba(30,41,59,0.7);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.1);
+.tool-card{
+background:rgba(15,23,42,0.6);
+border:1px solid rgba(255,255,255,0.05);
+transition:0.3s;
+}
+
+.tool-card:hover{
+transform:translateY(-6px);
+border-color:#10b981;
+box-shadow:0 20px 40px -10px rgba(16,185,129,0.3);
 }
 
 </style>
 
 </head>
 
-<body class="text-slate-200 font-sans flex flex-col items-center justify-center p-4 sm:p-8">
+<body class="min-h-screen flex flex-col">
 
+<!-- NAVBAR -->
 
-<!-- NAVIGATION -->
+<nav class="max-w-7xl mx-auto w-full px-6 py-6 flex justify-between items-center">
 
-<div style="margin-bottom:30px">
+<div class="flex items-center gap-3">
 
-<a href="index.html" style="color:white;margin:10px">Home</a>
+<div class="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center">
+⚡
+</div>
 
-<a href="trending.html" style="color:white;margin:10px">Trending Topics</a>
-
-<a href="script-generator.html" style="color:white;margin:10px">Script Generator</a>
-
-<a href="video-idea-generator.html" style="color:white;margin:10px">Video Ideas</a>
-
-<a href="thumbnail-generator.html" style="color:white;margin:10px">Thumbnail Tool</a>
-
-<a href="viral-score.html" style="color:white;margin:10px">Viral Score</a>
+<h1 class="font-bold text-xl">AI Trend Radar</h1>
 
 </div>
 
+<div class="hidden md:flex gap-6 text-sm text-slate-300">
 
-<!-- MAIN APP -->
+<a href="/index.html">Trend Radar</a>
 
-<div class="glass-card rounded-3xl p-8 relative shadow-2xl max-w-lg w-full">
+<a href="/trending.html">Trending Topics</a>
 
-<div class="text-center mb-8">
+<a href="/faceless-video-engine.html">Faceless Engine</a>
 
-<h1 class="text-3xl font-bold text-emerald-400 mb-2">
-AI Trend Radar
+<a href="/video-idea-generator.html">Video Idea Generator</a>
+
+<a href="/thumbnail-generator.html">Thumbnail Generator</a>
+
+<a href="/script-generator.html">Script Generator</a>
+
+<a href="/youtube-title-generator.html">Title Generator</a>
+
+<a href="/viral-score.html">Viral Score</a>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="text-center max-w-3xl mx-auto mt-10 mb-16 px-4">
+
+<h1 class="text-5xl font-bold mb-6">
+
+Ultimate AI Toolkit <br>
+
+<span class="text-emerald-400">for Content Creators</span>
+
 </h1>
 
 <p class="text-slate-400">
-Discover viral content opportunities
+
+Generate viral ideas, scripts, titles and thumbnails with powerful creator tools.
+
 </p>
 
-</div>
+</section>
 
 
-<input 
-type="text"
-id="topic"
-class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 text-white"
-placeholder="Enter topic (ChatGPT, AI Video...)"
-/>
+<!-- TOOLS GRID -->
 
+<section class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-<button
-onclick="startScan()"
-class="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl"
->
-Scan Trend
-</button>
+<!-- TOOL -->
 
+<a href="/index.html" class="tool-card p-6 rounded-2xl">
 
-<div id="result" class="mt-6 hidden">
+<h3 class="text-lg font-bold mb-2">Trend Radar Scanner</h3>
 
-<h2 id="resTopic" class="text-xl font-bold mb-3"></h2>
-
-<p class="text-lg">
-Growth:
-<span id="growth"></span>%
+<p class="text-slate-400 text-sm">
+Analyze trends and find viral opportunities.
 </p>
 
-<p class="text-lg">
-Score:
-<span id="score"></span>/100
+</a>
+
+
+<a href="/trending.html" class="tool-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-2">Trending Topics</h3>
+
+<p class="text-slate-400 text-sm">
+Discover hottest YouTube niches.
 </p>
 
-</div>
-
-</div>
+</a>
 
 
+<a href="/faceless-video-engine.html" class="tool-card p-6 rounded-2xl">
 
-<!-- JAVASCRIPT -->
+<h3 class="text-lg font-bold mb-2">Faceless Engine</h3>
 
-<script>
+<p class="text-slate-400 text-sm">
+Generate faceless video structure.
+</p>
 
-function startScan(){
-
-let topic=document.getElementById("topic").value;
-
-if(!topic){
-topic="AI"
-}
-
-let growth=Math.floor(Math.random()*500)+50;
-let score=Math.floor(Math.random()*60)+40;
-
-document.getElementById("resTopic").innerText="Topic: "+topic;
-
-document.getElementById("growth").innerText=growth;
-
-document.getElementById("score").innerText=score;
-
-document.getElementById("result").style.display="block";
-
-}
-
-</script>
+</a>
 
 
+<a href="/video-idea-generator.html" class="tool-card p-6 rounded-2xl">
 
-<!-- SUPABASE -->
+<h3 class="text-lg font-bold mb-2">Video Idea Generator</h3>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<p class="text-slate-400 text-sm">
+Create viral video concepts.
+</p>
 
-<script>
+</a>
 
-const supabaseClient = supabase.createClient(
 
-"https://zztusowpoaobaitkwugz.supabase.co",
+<a href="/thumbnail-generator.html" class="tool-card p-6 rounded-2xl">
 
-"zztusowpoaobaitkwugz"
+<h3 class="text-lg font-bold mb-2">Thumbnail Generator</h3>
 
-)
+<p class="text-slate-400 text-sm">
+Create high CTR thumbnail text.
+</p>
 
-</script>
+</a>
+
+
+<a href="/script-generator.html" class="tool-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-2">Script Generator</h3>
+
+<p class="text-slate-400 text-sm">
+Generate engaging YouTube scripts.
+</p>
+
+</a>
+
+
+<a href="/youtube-title-generator.html" class="tool-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-2">Title Generator</h3>
+
+<p class="text-slate-400 text-sm">
+Create high-click YouTube titles.
+</p>
+
+</a>
+
+
+<a href="/viral-score.html" class="tool-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-2">Viral Score Checker</h3>
+
+<p class="text-slate-400 text-sm">
+Check virality potential of ideas.
+</p>
+
+</a>
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="text-center text-slate-500 text-sm mt-20 pb-10">
+
+<p>AI Trend Radar Suite</p>
+
+<p class="mt-2">Created by <span class="text-emerald-400 font-semibold">Khokan Pal</span></p>
+
+</footer>
 
 
 </body>
